@@ -1,7 +1,7 @@
 const Discord = require("eris")
 const client = new Discord.CommandClient("Nzc5ODc0MjQ1MzcxMTAxMjU1.X7m4fQ.ldetV8lZmIPNwdYoTpH51QB79Bs", {}, {
   prefix: "!"
-}) //Disini kita akan menggunakan Token Bot kita
+}) 
 const { readdirSync } = require("fs")
 
 const CommandFile = readdirSync("./commands").filter(File => File.endsWith(".js"))
@@ -16,33 +16,35 @@ CommandFile.forEach(file => {
 
 
 client.on('ready', () => {
-  console.log("Bot siap untuk di gunakan") //dia akan memberitahu kita apabila botnya sudah siap di log
+  console.log("Bot is ready") 
 })
 
 //halo 
 client.on('messageCreate', async (message) => {
   if(message.content == "halo") {
-    client.createMessage(message.channel.id, "Halo, nice to meet you") //Bot akan merespon Halo Juga apa bila kamu bilang halo
+    client.createMessage(message.channel.id, "Halo, nice to meet you") 
   }
 })
 
 //hi
 client.on('messageCreate', async (message) => {
   if(message.content == "hi") {
-    client.createMessage(message.channel.id, "Hi, nice to meet you") //Bot akan merespon Halo Juga apa bila kamu bilang halo
+    client.createMessage(message.channel.id, "Hi, nice to meet you") 
   }
 })
 
-module.exports = {
-  name: "Badword",
-  description: "warn",
-  alias: ["anjeng", "anj","bgsd"],
-  run: async (client, message, args) => {
+//kata kasar
 client.on('messageCreate', async (message) => {
-  if(message.content == "anjg") {
-    client.createMessage(message.channel.id, "Mulut anda tolong dijaga ya!") //Bot akan merespon Halo Juga apa bila kamu bilang halo
+  if(message.content == "anjg","anj","anjeng","bgsd") {
+    client.createMessage(message.channel.id, "Mulut anda tolong dijaga ya!") 
   }
 })
-  }}
 
-client.connect() //Code ini digunakan agar si bot dapat terkoneksi ke Discord
+//ketawa
+client.on('messageCreate', async (message) => {
+  if(message.content == "wkwkwk") {
+    client.createMessage(message.channel.id, "wkwkwkwkwk") 
+  }
+})
+
+client.connect() 
