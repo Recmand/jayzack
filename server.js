@@ -35,7 +35,7 @@ client.on('messageCreate', async (message) => {
 
 //last update
 client.on('messageCreate', async (message) => {
-  if(message.content == "last update") {
+  if(message.content == "!last update") {
     client.createMessage(message.channel.id, "04/12/2020") 
   }
 })
@@ -48,8 +48,8 @@ client.on('messageCreate', async (message) => {
 })
 
 client.on('messageCreate', async (message) => {
-  if(message.content == "versi") {
-    client.createMessage(message.channel.id, "v") //Bot akan merespon Halo Juga apa bila kamu bilang halo
+  if(message.content == "!versi") {
+    client.createMessage(message.channel.id, "Versi ***0.0.1***") //Bot akan merespon Halo Juga apa bila kamu bilang halo
   }
 })
 
