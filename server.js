@@ -1,34 +1,28 @@
-// server.js
-// where your node app starts
+const Discord = require("eris")
+const client = new Discord.CommandClient("Token Bot", {}, {
+  prefix: "Prefix Bot"
+}) //Disini kita akan menggunakan Token Bot kita
+const { readdirSync } = require("fs")
 
-// we've started you off with Express (https://expressjs.com/)
-// but feel free to use whatever libraries or frameworks you'd like through `package.json`.
-const express = require("express");
-const app = express();
+const CommandFile = readdirSync("./commands").filter(File => File.endsWith(".js"))
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+CommandFile.forEach(file => {
+  const command = require(`./commands/${file}`)
+  client.registerCommand(command.name, async (message, args) => command.run(client, message, args), {
+    aliases: command.alias,
+    description: command.description
+  })
+})
 
-// make all the files in 'public' available
-// https://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"));
 
-// https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
-});
+client.on('ready', () => {
+  console.log("Bot siap untuk di gunakan") //dia akan memberitahu kita apabila botnya sudah siap di log
+})
 
-// send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  // express helps us take JS objects and send them as JSON
-  response.json(dreams);
-});
+client.on('messageCreate', async (message) => {
+  if(message.content == "halo") {
+    client.createMessage(message.channel.id, "Halo juga") //Bot akan merespon Halo Juga apa bila kamu bilang halo
+  }
+})
 
-// listen for requests :)
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+client.connect() //Code ini digunakan agar si bot dapat terkoneksi ke Discord

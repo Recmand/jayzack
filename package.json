@@ -10,7 +10,9 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "eris": "^0.14.0",
+    "fs": "^0.0.2"
   },
   "engines": {
     "node": "12.x"
