@@ -33,10 +33,10 @@ client.on('messageCreate', async (message) => {
   }
 })
 
-//kata kasar
+//last update
 client.on('messageCreate', async (message) => {
-  if(message.content == "anjg","anj","anjeng","bgsd") {
-    client.createMessage(message.channel.id, "Mulut anda tolong dijaga ya!") 
+  if(message.content == "last update") {
+    client.createMessage(message.channel.id, "04/12/2020") 
   }
 })
 
@@ -44,6 +44,12 @@ client.on('messageCreate', async (message) => {
 client.on('messageCreate', async (message) => {
   if(message.content == "wkwkwk") {
     client.createMessage(message.channel.id, "wkwkwkwkwk") 
+  }
+})
+
+client.on('messageCreate', async (message) => {
+  if(message.content == "versi") {
+    client.createMessage(message.channel.id, "v") //Bot akan merespon Halo Juga apa bila kamu bilang halo
   }
 })
 
